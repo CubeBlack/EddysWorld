@@ -1,0 +1,50 @@
+/* old
+.innert{
+	position:absolute;
+	border:1px solid blue;
+	background-color:rgba(50,50,255,0.5);
+	cursor:pointer;
+}
+*/
+.innert{
+	position:absolute;
+	cursor:pointer;
+    border:1px solid blue;
+    background-image: url("../img/inert.svg");
+    color: green;
+}
+.innert:hover{
+	position:absolute;
+	border:1px solid red;
+	background-color:pink;
+}
+.per{
+	position:absolute;
+	cursor:pointer;
+    border:1px solid white;
+    background-image: url("../img/personagemUp.svg");
+    background-repeat: no-repeat;
+    background-size: 100%; 
+    background-position: center;
+    color: green;
+}
+.per:hover{
+	position:absolute;
+	border:1px solid red;
+	background-color:pink;
+}
+.peaple{
+	
+}
+.grid-zero{
+	position:absolute;
+	border:1px solid gray;
+}
+.grid{
+	position:absolute;
+	border-bottom:1px solid gray;
+	border-right:1px solid gray;
+}
+#view{
+    overflow: scroll;
+}

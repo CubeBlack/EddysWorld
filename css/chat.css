@@ -1,0 +1,67 @@
+#conteudo{
+	background-color: rgba(255,255,255,0.8);
+	position: fixed;
+	right: calc(50% - 250px);
+	height: calc(100% - 130px);
+	width: 500px;	
+	box-shadow: 5px 5px rgba(100,100,100,0.8);
+	border-radius: 5px;
+	padding: 3px;
+	margin: 3px;
+    
+}
+#view{
+	width: 100%;
+	height: calc(100% - 40px);
+	border-radius: 5px;
+	padding: 3px;
+	margin: 3px;
+	border:1px solid black;
+	//background-image:url("../img/logo completo.png");
+	overflow: hidden;
+    overflow-y: scroll;
+}
+#query{
+	width: 100%;
+}
+#query input{
+	width: 100%;
+}
+#envidao,#recebido{
+	padding: 3px;	
+}
+#envido{
+	background-color: rgba(100,255,255,0.8);
+}
+#envido{
+	background-color: rgba(255,255,255,0.8);
+}
+#view div{
+
+}
+
+#intro{
+	text-align: center;
+	background-color: rgba(255,255,255,0.8);
+}
+.system,.send, .receved{
+	border-radius: 5px;
+	padding: 3px;
+	margin: 3px;
+	white-space: pre-wrap;
+}
+.system{
+	background-color: rgba(255,100,255,0.8);
+	
+}
+.send{
+	background-color: rgba(100,100,255,0.8);
+	text-align: right;
+	margin-left: 50px;
+	border-bottom-right-radius: 0px;
+}
+.receved{
+	background-color: rgba(100,255,100,0.8);
+	margin-right: 50px;
+	border-bottom-left-radius: 0px;
+}

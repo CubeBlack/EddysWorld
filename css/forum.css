@@ -1,0 +1,20 @@
+#content{
+	background-color: rgba(255,255,255,0.8);
+	border:1px solid black;
+	padding: 3px;
+	margin: 3px;
+	height: calc(100% - 130px);
+}
+#content div{
+	background-color: rgba(255,255,255,0.8);
+	border-top:1px solid black;
+	padding: 3px;
+	margin: 3px;
+	height: calc(100% - 130px);
+}
+#content #display{
+	border:none;
+}
+#content textarea{
+	width:100%;
+}

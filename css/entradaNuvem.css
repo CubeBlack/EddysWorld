@@ -1,0 +1,26 @@
+#entradanuvem{
+	position:absolute;
+	background-color: rgba(255,255,255,0.8);
+	border:1px solid balack;
+	padding: 3px;
+	margin: 3px;
+	width:calc(100% - 220px);
+	overflow:scroll;
+}
+#entradanuvem a{
+	text-decoration: none;
+	border: 1px solid black;
+	background-color: white;
+	padding: 3px;
+	margin: 3px;
+	float: left;
+	min-width: 50px;
+	text-align: center;
+	color: blue;
+	cursor:pointer;
+}
+#entradanuvem a:hover{
+	padding: 1px;
+	border:3px solid purple;
+	color: purple;
+}

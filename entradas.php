@@ -5,8 +5,16 @@
 	include "openingPage.php";
 ?>
 <!-------------------- conteudo -->
+    <template id="tDialogo">
+        <a style='font-size:{tamanho}px;'  onClick = 'entrada.get("{entrada}")'>
+            {entrada}
+            <SUP>{quantidade}</SUP>
+        </a>
+    </template>
+    <template>
 
-	<section id="entradaedit">
+    </template>
+	<section id="entradaedit" class="aside">
 		<section id="display">
 			<h2>{entrada}</h2>
 			<p>uso: {entrada.uso}</p>
@@ -21,9 +29,15 @@
 			<input type="button" onclick="entrada.cancelar()" value="Cancelar Edicao">
 		</div>
 	</section>
-	<section id="entradanuvem">
-		
-	</section>
+    <section class = "bloco content">
+        <section class="bloco">
+            <input id="entradaquery" onKeypress="dialogo.listar();">
+        </section>
+        <section id="entradanuvem">
+	   </section>
+    </section>
+
+	<script src="js/entradaNuvem.js" charset="utf-8"></script>
 	<script src="js/entradaNuvem.js" charset="utf-8"></script>
 	<script src="js/entradaEdit.js" charset="utf-8"></script>
 <!-------------------- conteudo -->

@@ -20,7 +20,11 @@
 			
 						
 		}
-		function onTime(){
-			
-		}
+        function cronos($referencia){
+            global $atos, $grimorio;
+            $atos->onTime();
+            $resposta = $grimorio->perceber();
+            $resposta = "";
+            return $resposta;
+        }
 	}

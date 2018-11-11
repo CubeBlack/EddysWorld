@@ -1,3 +1,5 @@
+<?php 
+//$jura <<<EOT
 <link rel="stylesheet" type="text/css" href="css/chat.css">
 <?php
 $pageTitle = "Eddy's world - Play Now";
@@ -23,3 +25,5 @@ include "openingPage.php";
 <?php
 
 include "endingPage.php";
+
+//EOT;

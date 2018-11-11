@@ -19,6 +19,12 @@
 			$db->mePDO->query($query);
 			return "Ok!";
 		}
+        public function setAngle($id, $angle){
+			global $db;
+			$query = "UPDATE `ew_object` SET `a` = '$angle' WHERE `id` = $id;";
+			$db->mePDO->query($query);
+			return "Ok!";
+        }
         //deveria ser statico?
 		public function update($id,$x,$y,$w,$h,$tipo){
 			global $db;
@@ -108,12 +114,22 @@
             $this->setPosition($this->id,$posx,$posy);
             return "Ok!";
         }
-        function transformById($id,$x,$y){
-            $pos = $this->getPositionById($id);
-            $posx = $pos->x+$x;
-            $posy = $pos->y+$y;
-            //echo "{$pos->y}+{$y}={$posy}";
-            $this->setPosition($id,$posx,$posy);
+        function transformById($id,$xAdd,$yAdd){
+            $obj = $this->get($id);
+            $xOld = $obj->position->x;
+            $yOld = $obj->position->y;
+            $rad = deg2rad($obj->angle);
+            //$rad = number_format(deg2rad($obj->angle),2);
+            
+            $xNew = $xOld;
+            $yNew = $yOld;
+            
+            
+            $xNew = (cos($rad) * $yAdd) + (sin($rad) * $yAdd) + $xOld;
+            $yNew = (cos($rad) * $xAdd) + (sin($rad) * $xAdd) + $yOld;
+
+            //echo "($rad)[" . ((cos($rad) * $yAdd) + (sin($rad) * $yAdd)) . "]x[" . ((cos($rad) * $xAdd) + (sin($rad) * $xAdd)s) . "]";
+            $this->setPosition($id,$xNew,$yNew);
             return "Ok!";
         }
         function translate($x,$y){

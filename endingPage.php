@@ -1,4 +1,5 @@
-		<div id="popup-base" class="popup-hidden">
+        <?php include "chat.php"; ?>
+        <div id="popup-base" class="popup-hidden">
 			<div id="popup-content">Content</div>		
 		</div>		
 		<footer>

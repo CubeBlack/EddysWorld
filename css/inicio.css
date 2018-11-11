@@ -1,0 +1,12 @@
+.chat{
+
+    background-color: rgba(255,255,255,0.8);
+    width: 500px;
+    z-index: 10;
+    height: calc(100% - 130px);
+    left: calc(50% - 250px);
+    bottom: 20px;
+}
+.chatcontrol{
+    display: none;
+}

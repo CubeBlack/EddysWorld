@@ -1,67 +1,74 @@
-#conteudo{
-	background-color: rgba(255,255,255,0.8);
-	position: fixed;
-	right: calc(50% - 250px);
-	height: calc(100% - 130px);
-	width: 500px;	
-	box-shadow: 5px 5px rgba(100,100,100,0.8);
-	border-radius: 5px;
-	padding: 3px;
-	margin: 3px;
+.chat{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 200px;
+    padding: 3px;
+    background-color: white;
+    z-index: 200;
     
 }
-#view{
-	width: 100%;
-	height: calc(100% - 40px);
-	border-radius: 5px;
-	padding: 3px;
-	margin: 3px;
-	border:1px solid black;
-	//background-image:url("../img/logo completo.png");
-	overflow: hidden;
+.chatview{
+    background-color: white;
+    border: 1px solid black;
+    padding: 3px;
+    max-height: 300px;
     overflow-y: scroll;
 }
-#query{
-	width: 100%;
+.chatinput{
+    width: 100%;
 }
-#query input{
-	width: 100%;
+.chatcontrol{
+    text-align: right;
 }
-#envidao,#recebido{
-	padding: 3px;	
+.chatcontrol a{
+    text-decoration: none;
+    color: purple;
+    cursor: pointer;
+    
 }
-#envido{
-	background-color: rgba(100,255,255,0.8);
-}
-#envido{
-	background-color: rgba(255,255,255,0.8);
-}
-#view div{
-
+.chatcontrol a:hover{
+    text-decoration: none;
+    color: red;
 }
 
-#intro{
-	text-align: center;
-	background-color: rgba(255,255,255,0.8);
-}
+/*mensagens */
+
 .system,.send, .receved{
 	border-radius: 5px;
 	padding: 3px;
 	margin: 3px;
 	white-space: pre-wrap;
+    border-bottom: 10px solid black;
+    border-bottom: 10px solid transparent;
 }
+
 .system{
 	background-color: rgba(255,100,255,0.8);
 	
 }
+
 .send{
 	background-color: rgba(100,100,255,0.8);
-	text-align: right;
-	margin-left: 50px;
+	text-align: left;
 	border-bottom-right-radius: 0px;
+    margin-right: 10px;
+    border-left:  10px solid white;
 }
 .receved{
 	background-color: rgba(100,255,100,0.8);
-	margin-right: 50px;
+    text-align: right;
+    margin-left: 10px;
 	border-bottom-left-radius: 0px;
+    border-right: 10px solid white;
 }
+/*
+.send{
+    float:left;
+    background-color:#39c;
+    border-top:10px solid #39c;
+    border-left:10px solid transparent;
+    background-clip: padding-box;
+    padding: 0 10px 10px 10px;
+}
+*/

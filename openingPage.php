@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <!--  -->
     <link rel="stylesheet" type="text/css" href="css/page.css">
-
+    <link rel="stylesheet" type="text/css" href="css/chat.css">
     <!--  -->
     <script src="js/terminal_v2.1.class.js" charset="utf-8"></script>
     <script src="js/page.js" charset="utf-8"></script>
@@ -33,23 +33,26 @@
                 <a href="index.php">
                     <li class="menu-item-opened">Inicio</li>
                 </a>
-                <a href="mapa.php">
+                <a href="mapa">
                     <li>Mapa</li>
                 </a>
-                <a href="wiki.php">
+                <a href="wiki">
                     <li>Wiki</li>
                 </a>
-                <a href="entradas.php">
+                <a href="entradas">
                     <li>Entradas</li>
                 </a>
-                <a href="quests.php">
+                <a href="quests">
                     <li>Quests</li>
                 </a>
-                <a href="mundo.php">
+                <a href="mundo">
                     <li>Mundo</li>
                 </a>
-                <a href="conta.php">
+                <a href="conta">
                     <li>conta</li>
+                </a>
+                <a href="terminal">
+                    <li>Terminal</li>
                 </a>
             </ul>
         </nav>

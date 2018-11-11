@@ -52,7 +52,9 @@ class Dialogo{
 	}
 	function listar($criterio="",$rTipo="arr"){
 		global $db;
-		$query = "SELECT DISTINCT entrada, count(*), sum(uso) from ew_dialogo group by entrada, uso order by sum(uso) desc;";
+        
+        //EXPLAIN SELECT DISTINCT entrada, count(*), sum(uso) from ew_dialogo WHERE entrada like '%a%' group by entrada, uso order by sum(uso) desc LIMIT 100 
+		$query = "SELECT DISTINCT entrada, count(*), sum(uso) from ew_dialogo WHERE entrada like '%$criterio%' group by entrada, uso order by sum(uso) desc LIMIT 100 ";
 		//$retorno = $db->tableSelect(Database::dialogoTb,"");
 		
 		$retorno = $db->mePDO->query($query)->fetchAll();

@@ -28,6 +28,7 @@
             }
             return $retorno;
         }
+        
         function set($ato,$limit){
             //INSERT INTO `ew_atos` (`id`, `atos`, `inicio`, `limit`) VALUES (NULL, 'Empty!', '1538319563', '1538319563');
             global $db;

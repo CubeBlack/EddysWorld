@@ -21,9 +21,11 @@ class Personagem extends GameObject{
         $go = $this->get($this->id);
         $retorno = $this->getById($this->id);
         $retorno["position"] = $go->position;
+         $retorno["a"] = $go->angle;
         if($rTipo=="json") $retorno = json_encode($retorno);
         return $retorno;
     }
+    
 	public function statusT($rTipo = ""){
 		global $dbl;
         $data = $dbl->get();
@@ -41,6 +43,15 @@ class Personagem extends GameObject{
         return $retorno;
         
 	}
+    public function novaPosicao($x, $y){
+        global $db;
+        $query = "UPDATE `ew_object` SET `x` = '$x', `y` = '$y' WHERE `id` = {$this->id};";
+        $db->mePDO->query($query);
+        return "Ok!";
+    }
+    public function novoAngulo($a){
+        $this->setAngle($this->id,$a);
+    }
 	public function setStatusF(){
 		
 	}
@@ -73,6 +84,9 @@ class Personagem extends GameObject{
     }
     function life(){
         return 100;
+    }
+    function angle(){
+        return $this->me()["a"];
     }
     function  position(){
         return $this->me()["position"];

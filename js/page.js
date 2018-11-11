@@ -1,6 +1,6 @@
 term = new Terminal();
 //--------  declarar terminal
-term.server = "http://molly/eddysworld-server/eddysworld_server.term.php";
+term.server = "http://molly/eddysworld/eddysworld_server.term.php";
 term.on();
 ///--------- pegar valores da URL
 var query = location.search.slice(1);

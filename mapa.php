@@ -9,7 +9,22 @@ include "openingPage.php";
 <!-------------------- onteudo -->
 
 <section id="mapa">
-    <div id="view"></div>
+    <div id="view">
+        <!-- //------------------ -->
+        <template id="inert" >
+            <div class="innert" style="top:{top}px; left:{left}px; width:{width}px; height:{height}px; ">
+                <label>{name}</label>
+               <!-- <img src="img/1background500.png"> -->
+            </div>
+        </template>
+        <template id="per"   >
+            <div class="per" style="top:{top}px; left:{left}px; width:{width}px; height:{height}px; ">
+                 <img src="img/personagemUp.svg" style="transform: rotate({angle}deg);"> 
+                <label>{name}</label>
+            </div>
+        </template>
+        <!-- //------------------ -->
+    </div>
     <div id="menu-view">
         <input type="button" onclick="view.setIn()" value="."><input type="button" onclick="view.setUp()" value="^"><input type="button" onclick="" value="."><br>
         <input type="button" onclick="view.setRigth()" value="<"><input type="button" onclick="view.resetar()" value="*"><input type="button" onclick="view.setLeft()" value=">"><br>

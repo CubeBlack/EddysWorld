@@ -132,10 +132,15 @@
             $this->setPosition($id,$xNew,$yNew);
             return "Ok!";
         }
-        function translate($x,$y){
-            global $atos;
+        function translate($x,$y,$status = "translate"){
+            global $atos, $me;
+            $ator = $me->id;
             $str = "me.transformById({$this->id},$x,$y);";
-            return $atos->set($str,0);
+            //$ato="user;",$limit=0,$ator=0,$status="ato"
+            return $atos->set($str,0,$ator,$status);
+        }
+        function translatById(){
+            
         }
         function rotate($angle){
             return $this->getAngle();
@@ -144,7 +149,11 @@
             
         }
         function lookAt($x,$y){
-            
+            /*
+            double deg = Math.toDegrees(Math.atan(1));
+            int ang = Math.round( (float) deg);
+            System.out.println(ang);
+            */
         }
         function stop(){
             

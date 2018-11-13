@@ -93,7 +93,7 @@ class Personagem extends GameObject{
     }
     // ------------ ações
     public function andar(){
-        $this->translate(0,$this->speed());
+        $this->translate(0,$this->speed(),"andar");
         
         return "Ok!";
     }

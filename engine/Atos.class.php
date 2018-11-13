@@ -28,15 +28,17 @@
             }
             return $retorno;
         }
-        
-        function set($ato,$limit){
+        function set($ato="user;",$limit=0,$ator=0,$status="ato"){
             //INSERT INTO `ew_atos` (`id`, `atos`, `inicio`, `limit`) VALUES (NULL, 'Empty!', '1538319563', '1538319563');
             global $db;
             $inicio = time();
             if($limit > 0) $limit = $limit + time();
-            $query = "INSERT INTO `ew_atos` (`id`, `atos`, `inicio`, `limit`) VALUES (NULL, '$ato', '$inicio', '$limit');";
+            echo $query = "INSERT INTO `ew_atos` (`id`, `atos`, `inicio`, `limit`, `ator`,`status`) VALUES (NULL, '$ato', '$inicio', '$limit','$ator','$status');";
             $results = $db->mePDO->query($query);
             return $db->mePDO->lastInsertid();
+        }
+        function actorStatus($id){
+            
         }
         function setT($ato,$limit){
             
@@ -51,6 +53,9 @@
             
         }
         function update(){
+            
+        }
+        function clearById(){
             
         }
         function executar($com){

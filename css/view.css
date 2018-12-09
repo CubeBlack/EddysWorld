@@ -35,6 +35,10 @@
 .per label, inert label{
     position: fixed;
 }
+.per div{
+    border: 1px dashed black;
+    position:absolute;
+}
 .per:hover{
 	position:absolute;
 	border:1px solid red;

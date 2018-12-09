@@ -55,8 +55,11 @@
         function update(){
             
         }
-        function clearById(){
-            
+        static function dropByAtor($ator){
+            global $db;
+            //DELETE FROM `ew_atos` WHERE `ew_atos`.`id` = 22
+            echo $query = "DELETE FROM `ew_atos` WHERE `ator` = $ator";
+            $results = $db->mePDO->query($query);
         }
         function executar($com){
             $vars = array(

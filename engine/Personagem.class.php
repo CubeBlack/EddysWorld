@@ -98,8 +98,8 @@ class Personagem extends GameObject{
         return "Ok!";
     }
     public function parar(){
-        $this->stop();
-        global $ato;
+        //global $ato;
+        Atos::dropByAtor($this->id);
     }
     public function atacar(){
         
@@ -111,6 +111,41 @@ class Personagem extends GameObject{
         
     }
     public function ver(){
+		global $db;
+        $me = $this->me();
+        $meX = $me["position"]->x;
+        $meY = $me["position"]->y;
+        $meId = $me["id"];
+        $areaL = 20;
+       //echo  $where = "WHERE (y + h) > ($meX - $areaL)";
+       $where = "where 
+                (
+                    x > ($meX - $areaL) or
+                    x + w > ($meX - $areaL) /* adicionar largura*/
+                ) and 
+                (
+                    x < ($meX + $areaL)
+                )and 
+                (
+                    y > ($meY - $areaL) or 
+                    y + h > ($meY - $areaL) 
+                ) and 
+                (
+                    y < ($meY + $areaL)
+                ) and
+                
+                id != $meId and
+                id != 0
+                ;";
+		$objs = $retorno = $db->tableSelect("ew_object",$where);
+        foreach($objs as $key => $obj){
+            $objs[$key] = GameObject::ofDatabase($obj);
+            echo "[" . $objs[$key]->name . "]";
+        }
+        
+        //var_dump($objs);
+       // var_dump($objs[2]->name);
+
         
     }
     static function byDatabase($id, $base){

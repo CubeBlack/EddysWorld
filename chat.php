@@ -16,4 +16,4 @@
     </div>
 </section>
 <script src="js/grimorio.js" charset="utf-8"></script>
-<script src="js/chartmini.js" charset="utf-8"></script>
+<aa script src="js/chartmini.js" charset="utf-8"></aa script>

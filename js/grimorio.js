@@ -34,10 +34,10 @@ grimorio.setMsg = function (msg,tipo="system") {
 ///-------------------------------------
 //--- cronos
 grimorio.rCronos = function ( msg){
-    //console.log(msg);
+    //console.log("[cronos|" + msg + "]");
     setTimeout(grimorio.cronos,1000);
     if(msg == "") return;
-    grimorio.setMsg(msg,"receved");
+        grimorio.setMsg(msg,"receved");
 }
 grimorio.cronos = function(){
     grimorio.termC.com(page.replace(grimorio.tCronos,{"referencia":3}),grimorio.rCronos);
@@ -56,3 +56,4 @@ grimorio.termC.on();
 //---
 grimorio.cronos();
 console.log("grimorio.js");
+

@@ -40,27 +40,27 @@ view.resetar = function () {
 }
 view.setIn = function () {
     view.z = view.z * 2;
-    view.rewrite();
+    view.rewrite2();
 }
 view.setOut = function () {
     view.z /= 2;
-    view.rewrite();
+    view.rewrite2();
 }
 view.setRigth = function () {
     view.x -= 40 / view.z;
-    view.rewrite();
+    view.rewrite2();
 }
 view.setLeft = function () {
     view.x += 20 / view.z;
-    view.rewrite();
+    view.rewrite2();
 }
 view.setUp = function () {
     view.y -= 20 / view.z;
-    view.rewrite();
+    view.rewrite2();
 }
 view.setDown = function () {
     view.y += 20 / view.z;
-    view.rewrite();
+    view.rewrite2();
 }
 view.loop = function () {
 
@@ -151,7 +151,12 @@ view.rewrite2 = function () {
             "left": ((parseInt(view.obj[index].position.x) * view.z) + (view.x *view.z) + view.ele.offsetWidth / 2),
             "width": (view.obj[index].tamanho.x * view.z),
             "height": (view.obj[index].tamanho.y * view.z),
-            "angle": view.obj[index].angle
+            "angle": view.obj[index].angle,
+            
+            "view.top": -(40 * view.z)/2,
+            "view.left": -(40 * view.z)/2,
+            "view.width": (40 * view.z),
+            "view.height": (40 * view.z),
             
         };
         if (view.obj[index].tipo == "personagem") {

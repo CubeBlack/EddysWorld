@@ -125,10 +125,10 @@
             $yNew = $yOld;
             
             
-            $xNew = (cos($rad) * $yAdd) + (sin($rad) * $yAdd) + $xOld;
-            $yNew = (cos($rad) * $xAdd) + (sin($rad) * $xAdd) + $yOld;
+            $yNew = $yOld - ((cos($rad) * $yAdd) + (sin($rad) * $xAdd));
+            $xNew = $xOld + ((cos($rad) * $xAdd) + (sin($rad) * $yAdd));
 
-            //echo "($rad)[" . ((cos($rad) * $yAdd) + (sin($rad) * $yAdd)) . "]x[" . ((cos($rad) * $xAdd) + (sin($rad) * $xAdd)s) . "]";
+            //echo "($rad)[" . ((cos($rad) * $yAdd) + (sin($rad) * $yAdd)) . "]x[" . ((cos($rad) * $xAdd) + (sin($rad) * $xAdd)) . "]";
             $this->setPosition($id,$xNew,$yNew);
             return "Ok!";
         }

@@ -19,6 +19,14 @@ include "openingPage.php";
         </template>
         <template id="per"   >
             <div class="per" style="top:{top}px; left:{left}px; width:{width}px; height:{height}px; ">
+                <div class="per-veiw" style="
+                                             position:absolute;
+                                             display={view.display};
+                                             top:{view.top}px; 
+                                             left:{view.left}px; 
+                                             width:{view.width}px; 
+                                             height:{view.height}px;
+                                             "></div>
                  <img src="img/personagemUp.svg" style="transform: rotate({angle}deg);"> 
                 <label>{name}</label>
             </div>

@@ -9,14 +9,16 @@
             foreach($atos as $ato){
                 $com =  $ato["atos"];
                 $aAto["id"] = $ato["id"];
-                
+
                 $aAto["reming"] = $ato["limit"] - time();
-               
+
                 $aAto["retorno"] = $this->executar($com);
                 $aAto["acao"] = $com;
                 $aAto["inicio"] = $ato["inicio"];
+                $aAto["ator"] = $ato["ator"];
                 $aAto["limite"] = $ato["limit"];
-                
+                $aAto["tag"] = $ato["tag"];
+
                 if($ato["limit"] > 0){
                     if($aAto["reming"] < 0){
                         $this->drop($ato["id"]);
@@ -28,37 +30,48 @@
             }
             return $retorno;
         }
-        function set($ato="user;",$limit=0,$ator=0,$status="ato"){
+        static function existe($ator, $tag){
+          global $db;
+          $query = "SELECT * FROM `ew_atos` WHERE `ator` = $ator AND `tag` = '$tag';";
+          $results = $db->mePDO->query($query);
+          $results = $results->fetchAll();
+          $results = empty($results);
+          var_dump($results);
+          return empty($results);
+        }
+        function set($ato="user;",$limit=0,$ator=0,$tag="ato"){
+            //verificar se o ato ja existe
+            if(Atos::existe($ator,$tag)) return false;
             //INSERT INTO `ew_atos` (`id`, `atos`, `inicio`, `limit`) VALUES (NULL, 'Empty!', '1538319563', '1538319563');
             global $db;
             $inicio = time();
             if($limit > 0) $limit = $limit + time();
-            echo $query = "INSERT INTO `ew_atos` (`id`, `atos`, `inicio`, `limit`, `ator`,`status`) VALUES (NULL, '$ato', '$inicio', '$limit','$ator','$status');";
+            $query = "INSERT INTO `ew_atos` (`id`, `atos`, `inicio`, `limit`, `ator`,`tag`) VALUES (NULL, '$ato', '$inicio', '$limit','$ator','$tag');";
             $results = $db->mePDO->query($query);
             return $db->mePDO->lastInsertid();
         }
         function actorStatus($id){
-            
+
         }
         function setT($ato,$limit){
-            
-            
+
+
         }
-        
+
         function drop($id){
             global $db;
             //DELETE FROM `ew_atos` WHERE `ew_atos`.`id` = 8
             $query = "DELETE FROM `ew_atos` WHERE `ew_atos`.`id` = $id";
             $results = $db->mePDO->query($query);
-            
+
         }
         function update(){
-            
+
         }
         static function dropByAtor($ator){
             global $db;
             //DELETE FROM `ew_atos` WHERE `ew_atos`.`id` = 22
-            echo $query = "DELETE FROM `ew_atos` WHERE `ator` = $ator";
+            $query = "DELETE FROM `ew_atos` WHERE `ator` = $ator";
             $results = $db->mePDO->query($query);
         }
         function executar($com){

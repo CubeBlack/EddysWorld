@@ -1,11 +1,12 @@
 grimorio = [];
+grimorio.windowLabel = Math.floor(Math.random() * Math.floor(1000));
 grimorio.eleView = document.getElementById("chatvie");
 grimorio.eleInput = document.getElementById("comandInp");
 grimorio.inputEnter = function (event){
 	var keynum;
 	if(window.event) { //IE
 		keynum = event.keyCode
-	} else if(event.which) { // Netscape/Firefox/Opera 
+	} else if(event.which) { // Netscape/Firefox/Opera
 		keynum = event.which
 	}
 	if( keynum == 13 ) {
@@ -32,17 +33,19 @@ grimorio.setMsg = function (msg,tipo="system") {
 	grimorio.eleView.scrollTop = grimorio.eleView.scrollHeight;
 }
 ///-------------------------------------
-//--- cronos
-grimorio.rCronos = function ( msg){
+//--- sentir
+grimorio.rSentir = function ( msg){
     //console.log("[cronos|" + msg + "]");
-    setTimeout(grimorio.cronos,1000);
+		setTimeout(grimorio.sentir,1000);
     if(msg == "") return;
-        grimorio.setMsg(msg,"receved");
+    	grimorio.setMsg(msg,"receved");
+
+		//setInterval(grimorio.sentir,1000);
 }
-grimorio.cronos = function(){
-    grimorio.termC.com(page.replace(grimorio.tCronos,{"referencia":3}),grimorio.rCronos);
+grimorio.sentir = function(){
+    grimorio.termC.com(page.replace(grimorio.tSentir,{"label":grimorio.windowLabel}),grimorio.rSentir);
 }
-grimorio.tCronos = "world.cronos({referencia})";
+grimorio.tSentir = "me.sentir(Web{label})";
 //------
 grimorio.tMsg = {};
 grimorio.tMsg["system"] = "<div class='system'>{msg}</><div></div>";
@@ -51,9 +54,11 @@ grimorio.tMsg["sended"] = "<div class='send'>{msg}</><div></div>";
 //----------
 grimorio.termC = new Terminal();
 //--------  declarar terminal
-grimorio.termC.server = "http://molly/eddysworld/eddysworld_server.term.php";
+grimorio.termC.server = term.server;
 grimorio.termC.on();
 //---
-grimorio.cronos();
-console.log("grimorio.js");
+//windown label
 
+grimorio.sentir();
+//window.setTimeout(grimorio.sentir,1000);
+console.log("grimorio.js");

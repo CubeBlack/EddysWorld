@@ -1,4 +1,4 @@
-<?php 
+<?php
 	if(!isset($pageTitle)) $pageTitle = "Eddy's";
 ?>
 <!DOCTYPE html>
@@ -17,6 +17,7 @@
     <!--  -->
     <script src="js/terminal_v2.1.class.js" charset="utf-8"></script>
     <script src="js/page.js" charset="utf-8"></script>
+		<script src="js/chat.js" charset="utf-8"></script>
 
 </head>
 
@@ -51,7 +52,10 @@
                 <a href="conta">
                     <li>conta</li>
                 </a>
-                <a href="terminal">
+								<a href="cronos">
+                    <li>Cronos</li>
+                </a>
+								<a href="terminal">
                     <li>Terminal</li>
                 </a>
             </ul>

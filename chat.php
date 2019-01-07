@@ -4,15 +4,17 @@
         [<a onclick="chat.hide()">Clear</a>]
         [<a onclick="chat.hide()">--</a>]
     </div>
-    <div class="chatview" id="chatvie">
-        <div class="intro">
-            <h1>Bem vindo a um novo mundo!</h1>
-            <p>Para saber mais sobre os tipos de dialogos...</p>
+    <div id="chatcontent">
+      <div class="chatview" id="chatvie">
+          <div class="intro">
+              <h1>Bem vindo a um novo mundo!</h1>
+              <p>Para saber mais sobre os tipos de dialogos...</p>
 
-        </div>
-    </div>
-    <div class="chatquery">
-        <input class="chatinput" type="text" id="comandInp" onKeyPress="grimorio.inputEnter(event)" placeholder="Digite aqui" autofocus>
+          </div>
+      </div>
+      <div class="chatquery">
+          <input class="chatinput" type="text" id="comandInp" onKeyPress="grimorio.inputEnter(event)" placeholder="Digite aqui" autofocus>
+      </div>
     </div>
 </section>
 <script src="js/grimorio.js" charset="utf-8"></script>

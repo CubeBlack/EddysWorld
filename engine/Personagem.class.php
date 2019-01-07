@@ -8,12 +8,12 @@ class Personagem extends GameObject{
 		$retorno = array();
 		$retorno=$this->statusT();
 		//var_dump($retorno);
-		if($this->id != 0){ 
+		if($this->id != 0){
 			$retorno["logued"] = "true";
 		}
-		else 
+		else
 			$retorno["logued"] = "false";
-		
+
 
 		return $retorno;
 	}
@@ -25,7 +25,7 @@ class Personagem extends GameObject{
         if($rTipo=="json") $retorno = json_encode($retorno);
         return $retorno;
     }
-    
+
 	public function statusT($rTipo = ""){
 		global $dbl;
         $data = $dbl->get();
@@ -41,7 +41,7 @@ class Personagem extends GameObject{
         $retorno = $obj;
         if($rTipo=="json") $retorno = json_encode($retorno);
         return $retorno;
-        
+
 	}
     public function novaPosicao($x, $y){
         global $db;
@@ -53,7 +53,7 @@ class Personagem extends GameObject{
         $this->setAngle($this->id,$a);
     }
 	public function setStatusF(){
-		
+
 	}
 	public function setStatusT($chave,$valor){
 		global $dbl;
@@ -92,9 +92,30 @@ class Personagem extends GameObject{
         return $this->me()["position"];
     }
     // ------------ ações
+		public function sentir($label="none"){
+			/*
+				vericar se alguem ou alguma coisa entrou no campo de visão e retornar para o usuario
+				verificar se alguem lhe esta atacando
+				Verificar se a novidades no server
+				Verificar se ouve siginificativa alteração de life/força/magia/xp
+				verificar se o personagem eta logado
+			*/
+			// remover isso quando der
+			if($this->id == 0){
+				return "Error: você não esta logado| label: " . $label;
+			}
+			///
+			global $atos;
+			$atos->onTime();
+			///
+			$objs = $this->ver();
+			//var_dump($objs);
+			return "";
+
+		}
     public function andar(){
         $this->translate(0,$this->speed(),"andar");
-        
+
         return "Ok!";
     }
     public function parar(){
@@ -102,13 +123,14 @@ class Personagem extends GameObject{
         Atos::dropByAtor($this->id);
     }
     public function atacar(){
-        
+			global $atos;
+			$atos->set("user;",0,$this->id,"atacar");
     }
     public function fugir(){
-        
+
     }
     public function pegar(){
-        
+
     }
     public function ver(){
 		global $db;
@@ -118,35 +140,35 @@ class Personagem extends GameObject{
         $meId = $me["id"];
         $areaL = 20;
        //echo  $where = "WHERE (y + h) > ($meX - $areaL)";
-       $where = "where 
+       $where = "where
                 (
                     x > ($meX - $areaL) or
                     x + w > ($meX - $areaL) /* adicionar largura*/
-                ) and 
+                ) and
                 (
                     x < ($meX + $areaL)
-                )and 
+                )and
                 (
-                    y > ($meY - $areaL) or 
-                    y + h > ($meY - $areaL) 
-                ) and 
+                    y > ($meY - $areaL) or
+                    y + h > ($meY - $areaL)
+                ) and
                 (
                     y < ($meY + $areaL)
                 ) and
-                
+
                 id != $meId and
                 id != 0
                 ;";
 		$objs = $retorno = $db->tableSelect("ew_object",$where);
         foreach($objs as $key => $obj){
             $objs[$key] = GameObject::ofDatabase($obj);
-            echo "[" . $objs[$key]->name . "]";
+            //echo "[" . $objs[$key]->name . "]";
         }
-        
+
         //var_dump($objs);
        // var_dump($objs[2]->name);
+			 return $objs;
 
-        
     }
     static function byDatabase($id, $base){
 		global $db;
@@ -154,10 +176,10 @@ class Personagem extends GameObject{
         $base->name = $retorno["name"];
         return $base;
     }
-    
+
 //------------
 public $help = "
-=== Personagem(iniciado como 'me') === 
+=== Personagem(iniciado como 'me') ===
 -- Valores --
 .nome()
 .magi()

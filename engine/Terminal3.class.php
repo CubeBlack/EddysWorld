@@ -1,4 +1,19 @@
 <?php
+/*
+	==== Terminal3 ======
+	Nova veção do terminal parar adicionar clausulas de saida
+	<comando>|<clausula>
+	*"user|X;"
+		para por na pilha de memoria
+	*user|off;
+		para não ser retornado o valor do retorno
+
+	outra atualização é a utilização de variaveis como parametro
+		*gri.dizer([[X]]);
+			Para utilizar o ultimo valor da pilha de memoria
+
+
+*/
 global $user;
 class Terminal2{
 	public function __construct($vars,$echo=true){
@@ -9,6 +24,7 @@ class Terminal2{
 		$com = Terminal2::parce($com);
 		$com = Terminal2::call($com,$this->vars);
 		if($this->echo) {
+			//exibir ou guardar depende da clausula
 			if(is_string($com)) echo $com;
 			else var_dump($com);
 
@@ -54,6 +70,11 @@ class Terminal2{
 						$aCom++;
 						continue;
 					}
+					//mudar para pegar a clausula de saida
+					if ($comStr[$i]=="|") {
+						$tGet = "clausula";
+						continue;
+					}
 				}
 				//----- params --
 				if($tGet=="param") {
@@ -70,7 +91,7 @@ class Terminal2{
 						$get = "";
 						continue;
 					}
-					///------
+					///------ Verificar se é parametro String
 					if(strlen($get)>7){
 						if(
 							$comStr[$i-8] == "s"&
@@ -91,6 +112,7 @@ class Terminal2{
 					}
 					//------
 				}
+				//verificar se o parametroString chegou ao fim
 				if($tGet=="paramStr") {
 					if(strlen($comStr)>7){
 						if(
@@ -112,8 +134,15 @@ class Terminal2{
 				}
 				$get .=  $comStr[$i];
 			}
-			//clausular de RetornoList
-			
+			//pegar parametro
+			if($tGet=="clausula") {
+				if ($comStr[$i]=="|") {
+
+				}
+				if ($comStr[$i]==";") {
+					$tGet = "node";
+				}
+			}
 			//ends
 			if($comStr[strlen($comStr)-1]!=";") {
 				if($tGet=="node") {
@@ -123,6 +152,10 @@ class Terminal2{
 				if($tGet=="param") {
 					if($get!="") $params[] = $get;
 					$comArr[$aCom]["params"] = $params;
+				}
+				if($tGet=="clausula") {
+					//if($get!="") $clausula[] = $get;
+					//$comArr[$aCom]["clausula"] = $clausula;
 				}
 			}
 

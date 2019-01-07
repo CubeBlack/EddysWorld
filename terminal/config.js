@@ -1,4 +1,4 @@
-server = "http://molly/eddysworld/eddysworld_server.term.php";
+server = "http://mollyB/EddysWorld/eddysworld_server.term.php";
 pre = "";
 pos = "";
 label = "Eddy's World";

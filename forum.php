@@ -8,7 +8,7 @@
 	$pageTitle = "EW | Forum[$tipo] : $titulo";
 	include "openingPage.php";
 ?>
-<!-------------------- onteudo -->
+<!-------------------- conteudo -->
 	<link rel="stylesheet" type="text/css" href="css/forum.css">
 	<section id="content">
 		<div id="display">{display}</div>

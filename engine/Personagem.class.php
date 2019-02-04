@@ -180,15 +180,13 @@ class Personagem extends GameObject{
 //------------
 public $help = "
 === Personagem(iniciado como 'me') ===
--- Valores --
-.nome()
-.magi()
+//Valores
+.manaA()
+.manaM()
 .speed()
 .strong()
--- Ações --
-.atacar()
-.fugir()
-.pegar()
-*
+.life()
+.angle()
+.position as Vector2
 ";
 }

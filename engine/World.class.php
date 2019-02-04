@@ -3,7 +3,7 @@
 		function __construct(){
 			$this->gameObject = array();
 		}
-        
+      //retorna todos os objetos em uma determinada arrea
 		function show($tRetorno="obj", $position="me",$filtro=""){
 			$retorno = GameObject::findByLocation("");
 			switch($tRetorno){
@@ -20,6 +20,7 @@
 			
 						
 		}
+		//execução de tempo de uma determinada area
         function cronos($referencia){
             global $atos, $grimorio;
             $atos->onTime();
@@ -27,5 +28,11 @@
             $resposta = "";
             return $resposta;
         }
+      public $help = 
+"
+=== Wolrd(word) ===
+ .show(tRetorno[obj], position[me],filtro[]) - retorna todos os objetos em uma determinada arrea
+ .cronos(referencia) - Execução cronologica dos 'atos' de uma determinada area
+";
         
 	}

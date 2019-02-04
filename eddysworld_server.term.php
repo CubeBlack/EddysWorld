@@ -19,4 +19,4 @@
 	}
 	$term->chamada($comStr);
 	fim:
-	
+	//

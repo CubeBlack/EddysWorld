@@ -90,7 +90,7 @@ melhor gastar procesamento pra "pegalos" toda vez que nescesario.
 			$pass = $grimorio->getWeited("pass");
 			$this->login($user,$pass);
 		}
-        public $heelp = "
+        public $help = "
 === User(user) ===
 .perId() as intiger
 .logued() as boolean

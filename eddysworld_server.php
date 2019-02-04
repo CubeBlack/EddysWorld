@@ -55,4 +55,7 @@ $vars = array(
     "atos"
 );
 //$term = New Terminal($vars);
-$term = New Terminal2($vars,true);
+$welcome ="
+----------| Terminal Eddy's World |---------
+" . $help;
+$term = New Terminal3($vars,true,$welcome);

@@ -15,17 +15,30 @@
 
 */
 global $user;
-class Terminal2{
-	public function __construct($vars,$echo=true){
+class Terminal3{
+	public function __construct($vars,$echo=true, $welcome=""){
 		$this->vars = $vars;
 		$this->echo = $echo;
+		if($welcome == "") $this->welcome = "Welcome to Amanda Script Terminal";
+			else $this->welcome = $welcome;
 	}
 	public function chamada($com) {
-		$com = Terminal2::parce($com);
-		$com = Terminal2::call($com,$this->vars);
+		if($com == "" || $com == " ") {
+			echo $this->welcome;
+			return $this->welcome; 		
+		}		
+		
+		$com = Terminal3::parce($com);
+		$com = Terminal3::call($com,$this->vars);
 		if($this->echo) {
 			//exibir ou guardar depende da clausula
 			if(is_string($com)) echo $com;
+			else if(is_object($com)){
+				if(isset($com->help))				
+					echo $com->help;
+				else
+					echo "Is object(help don't fould).";
+			} 
 			else var_dump($com);
 
 		}

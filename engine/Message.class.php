@@ -12,6 +12,8 @@
             $input = json_decode(file_get_contents('php://input'), true);
             // Get the Senders Graph ID
             if(isset($input['entry'][0]['messaging'])){
+                //verivicar se o usuario existe, caso não, criar
+                
                 if(isset($input['entry'][0]['messaging'][0]['message']["is_echo"])){
                     echo "is_echo";
                     return;

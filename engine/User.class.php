@@ -71,6 +71,14 @@ melhor gastar procesamento pra "pegalos" toda vez que nescesario.
 			}
 			return $this;
 		}
+		//verifica se o id do message pertense a augum usuario
+		function issetMessage($mId){
+            echo $mId;
+            return false;
+		}
+		function issetZap(){
+            return false;
+		}
 		function get ($rTipo = "arr") {
 			if($rTipo=="json") {
 				return json_encode($this);			

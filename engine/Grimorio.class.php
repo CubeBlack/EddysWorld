@@ -4,7 +4,7 @@ class Grimorio{
 	function __construct(){
         
 	}
-	function ouvir($texto=""){
+	function ouvir_($texto=""){
 		//Caso se esteja tentando executar um comando
 		if(strlen($texto)>2)
 			if($texto[0] == "."){
@@ -38,6 +38,9 @@ class Grimorio{
 		}
 		$retorno = $this->fazer($com[0]["saida"]);
 		return $retorno;
+	}
+	static function ouvir($id, $str){
+	  return VAZIO;
 	}
 	function fazer($com = ""){
 
@@ -84,7 +87,9 @@ class Grimorio{
 		$retorno = $this->fazer($retorno[0]["saida"]);
 		return $retorno;
 	}
-    
+	static function sentir($id){
+	  return VAZIO;
+	}    
 	function setWeit($index){
 		//global $dbl;
 		$dbl = new DataLocal();
@@ -163,3 +168,4 @@ class Grimorio{
 		return $str;
 	}
 }
+require_once("engine/Grimorio.class.php");

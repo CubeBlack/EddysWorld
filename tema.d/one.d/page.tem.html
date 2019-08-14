@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+	<head>
+		<title>EW | {{page}}</title>
+		<meta charset="utf8">
+		<link rel="stylesheet" href="{{TEMAPATH}}css/master.css">
+		<script src="{{TEMAPATH}}js/wrequest.js" charset="utf-8"></script>
+		<script src="{{TEMAPATH}}js/template.js" charset="utf-8"></script>
+		<script type="text/javascript">
+			var hookweb = "http://localhost/dannke/eddysworld/hookweb.php";
+		</script>
+	</head>
+	<body lang="pt-br">
+		<header class="page_block">
+			<img src="{{TEMAPATH}}img/logo_inerno.svg">
+			<span>Eddy's World | {{page}}</span>
+		</header>
+		<content>
+		{{content}}
+		</content>
+		<footer>
+			Dannke Games
+		</footer>
+		<nav id="menunav" class="nav_base" onclick="menuShow()">
+			<div class="nav_conteiner">
+				{{nav}}
+			</div>
+		</nav>
+		<span id="btn-nav" onclick="menuShow()" class="page_block">
+			=
+		</span>
+		<script src="{{TEMAPATH}}js/master.js"></script>
+	</body>
+</html>

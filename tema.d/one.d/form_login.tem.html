@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="{{TEMAPATH}}css/form_login.css">
+<form class="page_block" action="" method="post">
+	<p>Acesse sua conta</p>
+	<p>{{msg}}<p>
+	<p>
+		<label>Email: </lbel><br>
+		<input type="text" name="email" required/>
+	</p>
+	<p>
+		<label>Senha: </lbel><br>
+		<input type="password" name="senha" required/>
+	</p>
+	<p class="login_act">
+		<input type="hidden" name="a" value="login">
+		<input type="submit">
+		<input type="button" value="Não tenho senha" onclick="link('add_user.php')">
+	</p>
+</form>

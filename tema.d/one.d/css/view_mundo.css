@@ -1,0 +1,38 @@
+.mapa{
+  position: fixed;
+	display: block;
+	left: 6px;
+	top: 27px;
+	height: calc( 100% - 70px);
+	width: calc( 100% - 16px);
+	overflow: hidden;
+}
+.mapa_content{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.mapa_grid{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.acoes{
+  position: absolute;
+  top:0;
+  right: 0;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.grid{
+  position: absolute;
+  border: 1px solid gray;
+}
+.grid_center{
+
+}
+.inert{
+  position: absolute;
+  border:1px solid blue;
+  background-color:rgba(255,0,255,0.5);
+}

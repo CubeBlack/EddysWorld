@@ -1,0 +1,68 @@
+.sl_view{
+	position: fixed;
+	display: block;
+	left: 6px;
+	top: 27px;
+	height: calc( 100% - 70px);
+	width: calc( 100% - 16px);
+	overflow: hidden;
+}
+.sl_parte{
+	opacity: 0;
+	transition:  opacity 1s;
+	text-align: center;
+	display: none;
+}
+.sl_parte_ativo{
+	opacity: 1;
+	transition:  opacity 1s;
+	display: block;
+}
+.sl_texto{
+	position: absolute;
+	font-size: 20px;
+	bottom:5%;
+	right: 5%;
+	max-width: 90%;
+	background-color: rgba(255,255,255,0.3);
+	box-shadow: 2px 2px 2px gray;
+	padding: 5px;
+	border-radius: 5px;
+}
+.sl_fundo{
+	position: absolute;
+	top: 0;
+	display: block;
+	height: 100%;
+}
+/*--------------- --------------*/
+.btnProximo,.btnAnterior,.btnJogar{
+	position: absolute;
+	bottom: -10px;
+	box-shadow: 2px 2px 2px black;
+	transition: 0.5s;
+	cursor: pointer;
+
+}
+.btnProximo:hover,.btnAnterior:hover,.btnJogar:hover{
+	background-color: black;
+	color: white;
+}
+.btnProximo{
+	right: -10px;
+}
+.btnAnterior{left: -10px;}
+.btnJogar{
+	right: 50%;
+}
+/*------------*/
+.sl_view .logo{
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: auto;
+	width: auto;
+}
+.sl_view .logo img{
+	width: 20%;
+}

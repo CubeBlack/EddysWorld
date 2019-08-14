@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="{{TEMAPATH}}css/view_mundo.css">
+<div class="mapa page_block" >
+  <div class="mapa_grid" id="view_grid"></div>
+  <div class="mapa_content" id="view_content"></div>
+  <div class="acoes">
+    <button type="button" name="button" onclick="view.setIn()">+</button>
+    <button type="button" name="button" onclick="view.setUp()">^</button>
+    <button type="button" name="button" onclick="view.setOut()">-</button>
+
+    <button type="button" name="button" onclick="view.setOut()"><</button>
+    <button type="button" name="button" onclick="">CL</button>
+    <button type="button" name="button" onclick="view.setOut()">></button>
+
+    <button type="button" name="button" onclick="view.setOut()">*</button>
+    <button type="button" name="button" onclick="view.setOut()">V</button>
+    <button type="button" name="button" onclick="view.setOut()">*</button>
+  </div>
+</div>
+<template id="inert">
+  <div style="top:{{y}}px;left:{{x}}px;width:{{w}}px;height:{{h}}px; " class="inert">
+    {{nome}}
+  </div>
+</template>
+<template id="per">
+  <div style="top:{{top}}px;left:{{left}}px;width:{{width}}px;height:{{height}}px; " class="grid">{{content}}
+    <img src="" alt="">
+  </div>
+</template>
+<template id="grid_line">
+  <div style="top:{{top}}px;left:{{left}}px;width:{{width}}px;height:{{height}}px; " class="grid">{{content}}</div>
+</template>
+<script src="{{TEMAPATH}}js/view_mundo.js" charset="utf-8"></script>

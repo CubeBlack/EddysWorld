@@ -1,3 +1,4 @@
+a
 <?php require_once "engine.php"; ?>
 <!doctype html>
 <html>
@@ -6,8 +7,8 @@
   </head>
   <body>
 
-    <?php 
-      
+    <?php
+
       //
       if(isset($_GET["q"]))$query = $_GET["q"];
         else $query = "";
@@ -26,7 +27,7 @@
         }
         echo "</pre>";
       }
-      else { 
+      else {
         if(isset($_GET["u"]))$user = $_GET["u"];
           else $user = 0;
       ?>

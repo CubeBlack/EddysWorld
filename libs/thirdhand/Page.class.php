@@ -1,15 +1,11 @@
 <?php
-/*
-*=== Sistema de templates ===
-* 27 de maio de 2019
-* editado 27 de junho de 2019
-*/
 class Page{
 	//----------- publicos----------------
 	function __construct(){
 		//inniciar valores
-		$this->content = "Empty: Nenhum conteudo foi adicionado";
+		$this->otherHeaders = [];
 		$this->navArr = [];
+		$this->content = "Empty: Nenhum conteudo foi adicionado";
 		$this->name = "Empty: pagina não nomeada";
 	}
 	//adicionar nome
@@ -28,7 +24,7 @@ class Page{
 		    $navHTML .= Page::setTemplate("nav_item",$i);
 		}
 		return $navHTML;
-		
+
 	}
 	/// adicionar item ao menu
 	public function menuAddItem($label="Empty!", $link="#",$level=0){
@@ -44,10 +40,11 @@ class Page{
 	public function write(){
 		$d = [
 			"page"=>$this->name,
-			"nav"=>$this->menuMake(),
-			"content"=>$this->content
+			"header" => "\n".implode("\n",$this->otherHeaders),
+			"nav"=> "\n" . $this->menuMake(),
+			"content"=> "\n" . $this->content
 		];
-		
+
 		echo Page::setTemplate("page",$d);
 	}
 	//--------- staticos -------------
@@ -58,21 +55,22 @@ class Page{
     //pegar o conteudo do arquivo
     $str = file_get_contents($file);
     if(is_string($valor)) "[$valor]\n";
-    
+
     //verificar se o template está vazio
 		if($str == "") Page::error("Template is empty<br>$file", "Page::setTemplate()");
 		//exibir no me do artquivo
 		if(SHOWSOURCENAME){
 			echo "[page_template|$file] ";
 		}
-		
+
 		// -- carregar  conteudo
     if(is_string($valor)){
     	$valor = ["value"=>$valor];
     }
     //Valores padrão
     $valor["TEMAPATH"] = TEMABASEPATH."/".TEMANAME.".d/";
-    
+    $valor["LIBSPATH"] = LIBSPATH;
+
     //Trocar keys pelos valolres
     foreach ($valor as $key => $dado) {
       $str = str_replace('{{'.$key.'}}', $dado, $str);
@@ -81,8 +79,13 @@ class Page{
     //var_dump($str);
     return $str;
 	}
+
 	static function error($msg,$titulo="Erro"){
-		echo "<pre><h2>Erro $titulo</h2>$msg";
+		echo "<pre><h2>Thirt Hand Error: $titulo</h2>\n<p>$msg</p>";
 		die();
+	}
+	function addHeader($header){
+		$this->otherHeaders[] = $header;
+		//var_dump($this->otherHeaders);
 	}
 }

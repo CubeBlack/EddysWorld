@@ -11,11 +11,13 @@ spl_autoload_register("carregaClasse");
 //-------------------
 class E{
   function __construct($argument){}
+
   function sourceName($name){
 		if(SHOWSOURCENAME){
 		  echo "[sourceName|$name] ";
 		}
 	}
+
 	function dbQuery($query){
 	//SHOWDBASEQUERY
 	if(SHOWDBASEQUERY)
@@ -35,10 +37,31 @@ class E{
 
 		  $results = $db->query($query);
 		  if(SHOWDBASEERROR){
-		      $error = $db->errorInfo(); 
+		      $error = $db->errorInfo();
 		      echo $error[2];
 		  }
 		 return $results->fetchAll();
-		  
-	}    
+
+	}
+	function retornoTipo($valor,$tipo=""){
+		//-- tipo de retorno --
+		if ($tipo == 'dump') {
+			var_dump($valor);
+			return $retorno;
+		}
+		//-- json --
+		if ($tipo == 'json') {
+			return json_encode($valor);
+		}
+		//-- Apenas o objeto --
+		return $valor;
+	}
+	function libLoad($libName){
+		$filefullname = LIBSPATH."/{$libName}/load.php";
+		if (file_exists($filefullname)) {
+			require_once $filefullname;
+			return;
+		}
+		die("Erro ao carregar livraria: {$libName}");
+	}
 }

@@ -23,44 +23,61 @@ CREATE TABLE `ew_usersessao` (
   `inicio` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `ew_usersessao`
---
-
-INSERT INTO `ew_usersessao` (`token`, `user_id`, `tipo`, `inicio`) VALUES
-('0d08fc32ab6b51e4a652a4f57c5e6c34', 10, 1, '2019-07-19 18:32:08'),
-('2a1beff1b058c8c6e136d64e83dd754c', 10, 1, '2019-07-19 18:55:18'),
-('35bf6ae0a2d148384a7af82f866fefc1', 10, 1, '2019-07-19 18:32:03'),
-('4cea633459a305ac2cefd4342181c1e0', 10, 1, '2019-07-19 18:36:09'),
-('6810d3ae959774e7ef746d6f3b654746', 10, 1, '2019-07-19 18:57:27'),
-('8105d03494e3350d72c04f459bec83fe', 10, 1, '2019-07-19 18:55:29'),
-('b98c6bbd5be5920dcdda18730140a1c8', 10, 1, '2019-07-19 18:31:25'),
-('bb8b3cab7cb87c8841ecba7db9b678d5', 10, 1, '2019-07-19 18:39:05'),
-('c7871aeb0fa367e8050c51d92ba8246b', 10, 1, '2019-07-19 18:31:20'),
-('f252e3f3db3a6e838e2a002a41947926', 10, 1, '2019-07-19 18:40:18'),
-('f7dfcbe729955083efc4a3524709eb82', 10, 1, '2019-07-19 18:39:10'),
-('fb704b0ed52dba264eb79bfb4b561bf0', 10, 1, '2019-07-20 11:19:15');
--- ------------- Game Object -
+-- ------------- Game Object ---------
 DROP TABLE IF EXISTS `ew_go`;
 CREATE TABLE `ew_go` (
   `id` int(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `criacao` datetime -- default now()
+  `type` int(8) not null default 0, -- um nomero para mostar o uso na engine
+  `creation` TIMESTAMP default CURRENT_TIMESTAMP,
+  `world` int(8) not null default 0,
+  `mode` int(8) not null default 0,
+  `description` varchar(255) default 'Empty!',
+  -- Label --
+  `label` varchar(100) NOT NULL DEFAULT 'Empty!',
+  -- square --
+  `x` int(8) not null default 0,
+  `y` int(8) not null default 0, --
+  `w` int(8) not null default 0, -- Largura
+  `h` int(8) not null default 0, -- Altura
+  `a` int(3) not null default 0, -- Angulo
+  -- Atributos --
+	  -- ofencivos --
+		`damage_thermal` int(8) not null default 0,
+		`damage_physical` int(8) not null default 0,
+		`damage_biochemical` int(8) not null default 0,
+	  -- Defencivo --
+		`defense_thermal` int(8) not null default 0,
+		`defense_physical` int(8) not null default 0,
+		`defense_biochemical` int(8) not null default 0,
+	-- Multiplicatios --
+		`strength` int(8) not null default 0,
+		`intelligence` int(8) not null default 0,
+		`Magic` int(8) not null default 0,
+	-- ?? --	
+		`speed` int(8) not null default 0,
+		`durability` int(8) not null default 0
 
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci';
 
--- Tabela atos --
-DROP TABLE IF EXISTS `ew_atos`;
-CREATE TABLE `ew_atos` (
-  `id` int(11) NOT NULL,
-  `atos` text NOT NULL,
-  `inicio` int(8) NOT NULL,
-  `limit` int(8) NOT NULL,
-  `tag` varchar(100) NOT NULL DEFAULT 'empty'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci';
+-- Trigger --
+DROP TABLE IF EXISTS `ew_trigger`;
+CREATE TABLE `ew_trigger` (
+  `id` int(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `on` varchar(200) NOT NULL default 'Empty!',
+  `ontype` int(8) not null default 0,
+  `action` varchar(1000) not null default 'return;'
+ 
+)ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci';
+
+-- Tags --
+drop table if exists `ew_tag`;
+create table ew_tag(
+  `id` int(8) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci';
 
 -- Tabela Dialogo --
-DROP TABLE IF EXISTS `ew_dialogo`;
-CREATE TABLE `ew_dialogo` (
+DROP TABLE IF EXISTS `ew_dialogue`;
+CREATE TABLE `ew_dialogue` (
   `id` int(8) NOT NULL,
   `entrada` varchar(255) DEFAULT '',
   `saida` varchar(255) NOT NULL,
@@ -275,104 +292,21 @@ INSERT INTO `ew_dialogo` (`id`, `entrada`, `saida`, `personagem`, `uso`) VALUES
 (246, 'DEFR', 'Empty!', 0, 1),
 (247, 'E', 'Empty!', 0, 2);
 
--- ----------------- Inert -----------
+-- ----------------- GOs Para teste -----------
 
-DROP TABLE IF EXISTS `ew_inert`;
-
-CREATE TABLE `ew_inert` (
-  `id` int(8) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `descricao` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-
-INSERT INTO `ew_inert` (`id`, `name`, `descricao`) VALUES
-(1, 'Casa Das Armas', 'strBegin\"Casa debelona\"strEnd'),
-(2, 'O machaado do anÃ£o', 'strBegin\"Loja pequena\"strEnd'),
-(0, 'strBegin\"\"strEnd', ''),
-(11, 'PortÃ£o de Hermes', 'PortÃ£o dimencional para outra cidade'),
-(12, 'Ervas da eva', '\"strEnd'),
-(13, 'PenÃ§Ã£o Hinata', '\"strEnd\"strEnd'),
-(14, 'Rio ira de Leto', 'strBegin\"s\"strEnd'),
-(15, 'Floresta negra', '\"strEnd\"strEnd'),
-(16, 'Coliseum', 'strBegin\"\"strEnd'),
-(17, 'Rolos do Hobs', 'strBegin\"\"strEnd'),
-(18, 'SalÃ£o do soluÃ§o', '\"strEnd\"strEnd');
-
-
---
--- Extraindo dados da tabela `ew_object`
---
-
-INSERT INTO `ew_object` (`id`, `x`, `y`, `w`, `h`, `tipo`, `a`) VALUES
-(1, -25, -77, 50, 50, 'inert', 0),
-(2, 2, 29, 6, 10, 'inert', 0),
-(3, 10, 10, 1, 1, 'personagem', 0),
-(11, -1, -1, 2, 2, 'inert', 0),
-(12, 27, -25, 5, 5, 'inert', 0),
-(13, -42, 0, 15, 10, 'inert', 0),
-(14, -200, -200, 400, 9, 'inert', 0),
-(15, -452, -150, 400, 300, 'inert', 0),
-(16, -52, 29, 50, 50, 'inert', 0),
-(17, 27, 0, 15, 5, 'inert', 0),
-(18, 10, 29, 15, 10, 'inert', 0),
-(19, 10, -10, 1, 1, 'personagem', 0);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `ew_personagem`
---
-
-CREATE TABLE `ew_personagem` (
-  `id` int(8) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `tipo` int(11) NOT NULL,
-  `speed` int(3) NOT NULL,
-  `intelligence` int(8) NOT NULL,
-  `strong` int(8) NOT NULL,
-  `lifeA` int(3) NOT NULL,
-  `lifeM` int(3) NOT NULL,
-  `manaA` int(3) NOT NULL,
-  `manaM` int(3) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci';
-
---
--- Extraindo dados da tabela `ew_personagem`
---
-
-INSERT INTO `ew_personagem` (`id`, `name`, `tipo`, `speed`, `intelligence`, `strong`, `lifeA`, `lifeM`, `manaA`, `manaM`) VALUES
-(3, 'ApoKrifo', 1, 2, 2, 2, 10, 10, 10, 10),
-(19, 'GodOfNeet', 0, 2, 2, 2, 10, 10, 10, 10);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `ew_quests`
---
-
-CREATE TABLE `ew_quests` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL DEFAULT '',
-  `descricao` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci';
-
---
--- Extraindo dados da tabela `ew_quests`
---
-
-INSERT INTO `ew_quests` (`id`, `nome`, `descricao`) VALUES
-(1, 'noob', 'Primeira quest do jogo'),
-(2, 'nao logado', 'Para nao jogadores');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `ew_user`
---
-
-
--- --------------------------------------------------------
+INSERT INTO `ew_go` (`id`,`label`,`description`,`x`, `y`, `w`, `h`) VALUES
+(1, 'Casa Das Armas', 'Templo de Belona',-25, -77, 50, 50),
+(2, 'O machaado do anão', 'Loja pequana', 2, 29, 6, 10),
+(3, 'ApoKrifo', 'personagem de teste 1', 10, 10, 1, 1),
+(11, 'Portão de Hermes', 'Portão dimencional para passr a outra cidade',-1, -1, 2, 2),
+(12, 'Ervas da eva', 'Compra e venda de ervas',27, -25, 5, 5),
+(13, 'Penção Hinata', '',-42, 0, 15, 10),
+(14, 'Rio ira de Leto', '', -200, -200, 400, 9),
+(15, 'Floresta negra', '',-452, -150, 400, 300),
+(16, 'Coliseum', '',-52, 29, 50, 50),
+(17, 'Rolos do Hobs', '',27, 0, 15, 5),
+(18, 'Salão do soluço', '',10, 29, 15, 10),
+(19, 'GodOfNeet', 'personagem de teste 2', 10, -10, 1, 1);
 
 --
 -- Estrutura da tabela `ew_wiki`
@@ -414,126 +348,3 @@ INSERT INTO `ew_wikipage` (`id`, `titulo`, `tipo`, `conteudo`) VALUES
 (1, 'Life', 'Dialogo', 'Esta a pagina da entrada Life'),
 (3, 'Mana', 'a', 'Pergunta curta para saber o mana');
 
---
--- Índices para tabelas despejadas
---
-
---
-
---
--- Índices para tabela `ew_atos`
---
-ALTER TABLE `ew_atos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices para tabela `ew_dialogo`
---
-ALTER TABLE `ew_dialogo`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices para tabela `ew_inert`
---
-ALTER TABLE `ew_inert`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices para tabela `ew_object`
---
-ALTER TABLE `ew_object`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices para tabela `ew_personagem`
---
-ALTER TABLE `ew_personagem`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices para tabela `ew_quests`
---
-ALTER TABLE `ew_quests`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices para tabela `ew_user`
---
-ALTER TABLE `ew_user`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices para tabela `ew_usersessao`
---
-ALTER TABLE `ew_usersessao`
-  ADD PRIMARY KEY (`token`);
-
---
--- Índices para tabela `ew_wiki`
---
-ALTER TABLE `ew_wiki`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices para tabela `ew_wikipage`
---
-ALTER TABLE `ew_wikipage`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de tabelas despejadas
---
-
-
---
--- AUTO_INCREMENT de tabela `ew_atos`
---
-ALTER TABLE `ew_atos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT de tabela `ew_dialogo`
---
-ALTER TABLE `ew_dialogo`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
-
---
--- AUTO_INCREMENT de tabela `ew_object`
---
-ALTER TABLE `ew_object`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT de tabela `ew_personagem`
---
-ALTER TABLE `ew_personagem`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT de tabela `ew_quests`
---
-ALTER TABLE `ew_quests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de tabela `ew_user`
---
-ALTER TABLE `ew_user`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT de tabela `ew_wiki`
---
-ALTER TABLE `ew_wiki`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de tabela `ew_wikipage`
---
-ALTER TABLE `ew_wikipage`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

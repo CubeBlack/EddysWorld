@@ -16,3 +16,6 @@ define("DBHOSTPASS","Shispirito85");
 define("DBHOSTDBNA","ew");
 //
 define("VAZIO", "Empty!");
+
+//Lirarias
+define("LIBSPATH",'libs');

@@ -16,11 +16,12 @@ CREATE TABLE `ew_user` (
 INSERT INTO `ew_user` (`id`, `idm`, `config`, `nick`, `email`, `password`, `tipo`, `personagem`) VALUES
 (10, 0, '', 'asdf', 'asdf', 'd687835994fb896155d9d29ac1974c76', 0, 0);
 
+DROP TABLE IF EXISTS `ew_usersessao`;
 CREATE TABLE `ew_usersessao` (
   `token` varchar(40) NOT NULL,
   `user_id` int(8) DEFAULT NULL,
   `tipo` int(2) DEFAULT NULL,
-  `inicio` datetime NOT NULL DEFAULT current_timestamp()
+  `inicio` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ------------- Game Object ---------
@@ -53,11 +54,25 @@ CREATE TABLE `ew_go` (
 		`strength` int(8) not null default 0,
 		`intelligence` int(8) not null default 0,
 		`Magic` int(8) not null default 0,
-	-- ?? --	
+	-- ?? --
 		`speed` int(8) not null default 0,
 		`durability` int(8) not null default 0
 
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci';
+
+INSERT INTO `ew_go` (`id`,`label`,`description`,`x`, `y`, `w`, `h`) VALUES
+(1, 'Casa Das Armas', 'Templo de Belona',-25, -77, 50, 50),
+(2, 'O machaado do anão', 'Loja pequana', 2, 29, 6, 10),
+(3, 'ApoKrifo', 'personagem de teste 1', 10, 10, 1, 1),
+(11, 'Portão de Hermes', 'Portão dimencional para passr a outra cidade',-1, -1, 2, 2),
+(12, 'Ervas da eva', 'Compra e venda de ervas',27, -25, 5, 5),
+(13, 'Penção Hinata', '',-42, 0, 15, 10),
+(14, 'Rio ira de Leto', '', -200, -200, 400, 9),
+(15, 'Floresta negra', '',-452, -150, 400, 300),
+(16, 'Coliseum', '',-52, 29, 50, 50),
+(17, 'Rolos do Hobs', '',27, 0, 15, 5),
+(18, 'Salão do soluço', '',10, 29, 15, 10),
+(19, 'GodOfNeet', 'personagem de teste 2', 10, -10, 1, 1);
 
 -- Trigger --
 DROP TABLE IF EXISTS `ew_trigger`;
@@ -66,7 +81,7 @@ CREATE TABLE `ew_trigger` (
   `on` varchar(200) NOT NULL default 'Empty!',
   `ontype` int(8) not null default 0,
   `action` varchar(1000) not null default 'return;'
- 
+
 )ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci';
 
 -- Tags --
@@ -75,6 +90,7 @@ create table ew_tag(
   `id` int(8) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci';
 
+/*
 -- Tabela Dialogo --
 DROP TABLE IF EXISTS `ew_dialogue`;
 CREATE TABLE `ew_dialogue` (
@@ -348,3 +364,4 @@ INSERT INTO `ew_wikipage` (`id`, `titulo`, `tipo`, `conteudo`) VALUES
 (1, 'Life', 'Dialogo', 'Esta a pagina da entrada Life'),
 (3, 'Mana', 'a', 'Pergunta curta para saber o mana');
 
+*/

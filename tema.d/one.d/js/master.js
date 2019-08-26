@@ -1,3 +1,4 @@
+server = "http://" + window.location.host + "/";
 //------------ Link ---------------
 function link(url) {
   window.location.href = url;

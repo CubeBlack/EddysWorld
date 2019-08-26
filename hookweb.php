@@ -10,8 +10,8 @@ if($a == "com"){
   $retorno = eval($com);
   die();
 }
-if ($a == "mundo") {
-  echo World::show("json");
+if ($a == "view") {
+  echo World::view("json");
   die();
 }
 ?>
